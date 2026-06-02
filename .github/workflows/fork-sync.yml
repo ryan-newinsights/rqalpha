@@ -1,0 +1,14 @@
+name: Keep fork in sync
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+jobs:
+  sync:
+    uses: ryan-newinsights/github-workflows/.github/workflows/fork-sync.yml@main
+    permissions:
+      contents: write
+    with:
+      upstream_repo: ricequant/rqalpha
+      branch: master
+      strategy: rebase
